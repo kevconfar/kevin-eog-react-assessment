@@ -3,10 +3,13 @@ import { ToastContainer } from 'react-toastify';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
+import { ApolloProvider } from '@apollo/client';
 import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import MetricSelector from './components/MetricSelector';
-import Measurements from './Features/Measurements';
+import Dashboard from './components/Dashboard';
+
+import apolloClient from './apolloSetup';
 
 const theme = createTheme({
   palette: {
@@ -26,12 +29,15 @@ const App = () => (
 
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
-    <Wrapper>
-      <Header />
-      <ToastContainer />
-      <MetricSelector />
-      <Measurements />
-    </Wrapper>
+    <ApolloProvider client={apolloClient}>
+      <Wrapper>
+        <Header />
+        <ToastContainer />
+        <MetricSelector />
+        <Dashboard />
+      </Wrapper>
+    </ApolloProvider>
+
   </MuiThemeProvider>
 );
 
