@@ -28,6 +28,7 @@ const GET_MEASUREMENTS = gql`
       getMultipleMeasurements(input: $metrics) {
         metric
         measurements {
+          metric
           at
           value
           unit
