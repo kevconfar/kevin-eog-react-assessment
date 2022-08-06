@@ -10,6 +10,7 @@ import {
 } from '../Features/measurementsSlice';
 
 import MeasurementCard from './MeasurementCard';
+import MeasurementChart from './MeasurementChart';
 
 const MEASUREMENTS_SUBSCRIPTION = gql`
     subscription {
@@ -55,8 +56,16 @@ export default function Dashboard() {
   const cards = selectedMetrics.map((metric) => <MeasurementCard name={metric} data={current[metric]} />);
 
   return (
-    <div>
-      {cards}
+    <div style={{ display: 'flex' }}>
+      <div style={{
+        display: 'flex', flexDirection: 'column', width: '10%', justifyContent: 'center', alignItems: 'center',
+      }}
+      >
+        {cards}
+      </div>
+      <div style={{ width: '90%', marginTop: '10%' }}>
+        {(selectedMetrics.length > 0) ? <MeasurementChart /> : null }
+      </div>
     </div>
   );
 }
