@@ -1,4 +1,3 @@
-/* eslint-disable */
 import moment from 'moment';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -23,7 +22,7 @@ export default function MeasurementChart() {
     if (selectedMetrics.length > 0) {
       const obj = {};
       const x = selectedMeasurements[selectedMetrics[0]][i];
-      for (const k in x) {
+      if (x) {
         obj.at = moment(x.at).format('LT');
         for (let n = 0; n < selectedMetrics.length; n += 1) {
           if (selectedMeasurements[selectedMetrics[n]][i]) {
@@ -62,8 +61,8 @@ export default function MeasurementChart() {
               value: '℉', angle: '-90', position: 'insideLeft', dy: '-30',
             }}
           />
-          <YAxis label={{ value: 'PSI', angle: '90', position: 'outsideLeft' }} yAxisId="psi" orientation="right" domain={['auto', 'auto']} />
-          <YAxis label={{ value: '%', angle: '90', position: 'outsideRight' }} yAxisId="%" orientation="right" domain={['auto', 'auto']} />
+          {(selectedMetrics.includes('injValveOpen')) ? <YAxis label={{ value: '%', angle: '90', position: 'outsideRight' }} yAxisId="%" orientation="right" domain={['auto', 'auto']} /> : null }
+          {(selectedMetrics.includes('casingPressure') || selectedMetrics.includes('tubingPressure')) ? <YAxis label={{ value: 'PSI', angle: '90', position: 'outsideLeft' }} yAxisId="psi" orientation="right" domain={['auto', 'auto']} /> : null}
 
           <Tooltip />
           <Legend />
@@ -73,4 +72,3 @@ export default function MeasurementChart() {
     </div>
   );
 }
-/* eslint-enable */
