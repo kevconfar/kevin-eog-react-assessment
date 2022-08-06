@@ -34,6 +34,7 @@ export const measurementsSlice = createSlice({
     setNewMetricMeasurement: (state, action) => {
       const { metric } = action.payload.measurement;
       state.metricMeasurements[metric].push(action.payload.measurement);
+      state.metricMeasurements[metric].shift();
     },
   },
 

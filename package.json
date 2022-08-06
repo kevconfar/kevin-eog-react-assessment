@@ -17,6 +17,8 @@
     "graphql": "^14.5.8",
     "graphql-ws": "^5.9.1",
     "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.29.4",
+    "plotly.js-dist": "^2.13.3",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -24,6 +26,7 @@
     "react-toastify": "^5.4.0",
     "react-use": "^17.2.4",
     "rebound": "^0.1.0",
+    "recharts": "^2.1.13",
     "subscriptions-transport-ws": "^0.11.0"
   },
   "scripts": {
